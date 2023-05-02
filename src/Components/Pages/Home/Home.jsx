@@ -1,6 +1,7 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
 import ChefCart from "../ChefCart/ChefCart";
+import BestFood from "../BestFood/BestFood";
 
 const Home = () => {
 	const data = useLoaderData();
@@ -35,6 +36,8 @@ const Home = () => {
 					<ChefCart key={singleData.id} data={singleData}></ChefCart>
 				))}
 			</div>
+
+			<BestFood></BestFood>
 		</>
 	);
 };
