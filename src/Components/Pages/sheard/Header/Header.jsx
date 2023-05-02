@@ -1,9 +1,11 @@
 import React from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
+import { IoIosLogIn } from "react-icons/io";
+
 const Header = () => {
 	return (
-		<div className="navbar bg-[#7CB342]">
+		<div className="navbar sticky top-0 z-50 bg-[#7CB342]">
 			<div className="navbar-start">
 				<div className="dropdown">
 					<label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -62,7 +64,10 @@ const Header = () => {
 					</div>
 				</div>
 				<Link to="/login">
-					<button className="login-btn">Login</button>
+					<button className="login-btn">
+						{" "}
+						<IoIosLogIn className="mr-2 mt-[6px] text-2xl"></IoIosLogIn> Login
+					</button>
 				</Link>
 			</div>
 		</div>

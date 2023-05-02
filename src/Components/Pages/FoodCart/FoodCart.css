@@ -1,0 +1,15 @@
+.chef-details-btn{
+    display: flex;
+           margin-top:10px;
+           background-color: #7CB342;
+           padding: 10px 22px;
+           font-size: 22px;
+           border-radius: 10px;
+           margin-right:30px;
+       }
+       
+       .chef-details-btn:hover{
+           background-color: white;
+           color: black;
+       }   
+   

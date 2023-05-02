@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./ChefCart.css";
 import { FaHeart, FaHamburger, FaChessRook, FaStar } from "react-icons/fa";
+import "@smastrom/react-rating/style.css";
+import { Rating } from "@smastrom/react-rating";
 
 const ChefCart = ({ data }) => {
 	const {
@@ -14,6 +16,7 @@ const ChefCart = ({ data }) => {
 		years_of_experience,
 		bio,
 	} = data;
+
 	return (
 		<div className="mt-12 mb-12 card w-96 bg-base-100 shadow-xl">
 			<figure>
@@ -51,20 +54,14 @@ const ChefCart = ({ data }) => {
 								<p className=" text-[20px] font-bold text-[#353535]">
 									Rating {rating}
 								</p>
-								<p className="ml-0 flex text-[25px]">
-									<FaStar></FaStar>
-									<FaStar></FaStar>
-									<FaStar></FaStar>
-									<FaStar></FaStar>
-									<FaStar></FaStar>
-								</p>
+								<Rating style={{ maxWidth: 150 }} value={rating} readOnly />
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<Link className="mx-auto mb-8" to={`/details/${id}`}>
-				<button className="chef-btn"> View Details</button>
+			<Link className="mx-auto mb-8" to={`/${id}`}>
+				<button className="chef-btn"> View Chef Recipes</button>
 			</Link>
 		</div>
 	);
