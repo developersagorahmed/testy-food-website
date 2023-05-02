@@ -2,6 +2,7 @@ import React from "react";
 import { useLoaderData } from "react-router-dom";
 import ChefCart from "../ChefCart/ChefCart";
 import BestFood from "../BestFood/BestFood";
+import AboutUs from "../AboutUs/AboutUs";
 
 const Home = () => {
 	const data = useLoaderData();
@@ -31,6 +32,9 @@ const Home = () => {
 					</div>
 				</div>
 			</div>
+			<h1 className="text-[80px] mx-auto text-center font-extrabold underline text-[#7CB342]">
+				Our Chef
+			</h1>
 			<div className="md:container md:mx-auto md:mt-8 grid md:grid-cols-3 ">
 				{data?.map((singleData) => (
 					<ChefCart key={singleData.id} data={singleData}></ChefCart>
@@ -38,6 +42,8 @@ const Home = () => {
 			</div>
 
 			<BestFood></BestFood>
+
+			<AboutUs></AboutUs>
 		</>
 	);
 };

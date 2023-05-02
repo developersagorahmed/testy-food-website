@@ -48,10 +48,10 @@ const ChefCart = ({ data }) => {
 								</div>
 							</div>
 							<div className="flex mt-6 ml-2">
-								<p className="text-[20px] font-bold text-[#353535]">
-									Rating {rating}{" "}
+								<p className=" text-[20px] font-bold text-[#353535]">
+									Rating {rating}
 								</p>
-								<p className="mt-1 flex text-[25px]">
+								<p className="ml-0 flex text-[25px]">
 									<FaStar></FaStar>
 									<FaStar></FaStar>
 									<FaStar></FaStar>
