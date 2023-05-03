@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
-import { IoIosLogIn } from "react-icons/io";
+import { IoIosLogIn, IoIosLogOut } from "react-icons/io";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 const Header = () => {
+	const { user } = useContext(AuthContext);
+	console.log(user);
+
 	return (
 		<div className="navbar sticky top-0 z-50 bg-[#7CB342]">
 			<div className="navbar-start">
@@ -57,19 +61,27 @@ const Header = () => {
 					</li>
 				</ul>
 			</div>
-			<div className="navbar-end">
-				<div className="avatar mr-5">
-					<div className="w-12 mt-3 rounded-full ring ring-primary ring-offset-base-100">
-						<img src="https://i.ibb.co/q7wTcQ1/Whats-App-Image-2023-04-18-at-3-07-58-PM-2.jpg" />
+			{user ? (
+				<div className="navbar-end">
+					<div className="avatar mr-5">
+						<div className="w-10 mt-2 rounded-full ring ring-primary ring-offset-base-100">
+							<img src="https://i.ibb.co/q7wTcQ1/Whats-App-Image-2023-04-18-at-3-07-58-PM-2.jpg" />
+						</div>
 					</div>
+					<Link to="/login">
+						<button className="login-btn">
+							<IoIosLogOut className="mr-2 mt-[6px] text-2xl"></IoIosLogOut>{" "}
+							Logout
+						</button>
+					</Link>
 				</div>
+			) : (
 				<Link to="/login">
 					<button className="login-btn">
-						{" "}
 						<IoIosLogIn className="mr-2 mt-[6px] text-2xl"></IoIosLogIn> Login
 					</button>
 				</Link>
-			</div>
+			)}
 		</div>
 	);
 };
