@@ -45,8 +45,8 @@ const ChefCart = ({ data }) => {
 									</div>
 								</div>
 
-								<div className="flex ml-10">
-									<FaHeart className="mr-[4px] text-[25px] mt-[2px] text-[#a50202]"></FaHeart>
+								<div className="flex ml-6">
+									<FaHeart className="mr-[4px] text-[25px] mt-[2px] text-[#FF3040]"></FaHeart>
 									<p className="font-bold text-[#353535]">{likes}</p>
 								</div>
 							</div>

@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Register = () => {
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+
+	const handleForm = (event) => {
+		console.log(email);
+	};
+
 	return (
 		<div className="hero min-h-screen bg-base-200">
 			<div className="hero-content flex-col lg:flex-row-reverse">
 				<div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-					<form className="card-body">
+					<form onSubmit={handleForm} className="card-body">
 						<h2 className="mx-auto text-3xl font-bold underline text-[#7CB342]">
 							Registration
 						</h2>
@@ -15,8 +22,11 @@ const Register = () => {
 								<span className="label-text">Email</span>
 							</label>
 							<input
+								onChange={(e) => {
+									setEmail(e.target.value);
+								}}
 								name="email"
-								type="text"
+								type="email"
 								placeholder="email"
 								className="input input-bordered rounded-md"
 							/>
@@ -57,7 +67,11 @@ const Register = () => {
 							</label>
 						</div>
 						<div className="form-control mt-6">
-							<button className="bg-[#7CB342] btn btn-primary rounded-md">
+							<button
+								type="submit"
+								name="submit"
+								className="bg-[#7CB342] btn btn-primary rounded-md"
+							>
 								Sign Up
 							</button>
 						</div>

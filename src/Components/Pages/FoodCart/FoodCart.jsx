@@ -3,6 +3,8 @@ import { FaHeart } from "react-icons/fa";
 import "./FoodCart.css";
 import "@smastrom/react-rating/style.css";
 import { Rating } from "@smastrom/react-rating";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const FoodCart = ({ data }) => {
 	console.log(data);
 	const { recipe_name, recipe_img, ingredients, cooking_method, rating } = data;
@@ -32,13 +34,17 @@ const FoodCart = ({ data }) => {
 							<Rating style={{ maxWidth: 120 }} value={rating} readOnly />
 						</div>
 						<div className=" card-actions justify-end ">
-							<button className=" text-red-900 chef-details-btn">
+							<button
+								onClick={() => toast("This recipes added to you collections")}
+								className=" text-red-900 chef-details-btn"
+							>
 								<FaHeart className="mr-2 mt-2 text-red-900"></FaHeart> Favourite
 							</button>
 						</div>
 					</div>
 				</div>
 			</div>
+			<ToastContainer />
 		</div>
 	);
 };

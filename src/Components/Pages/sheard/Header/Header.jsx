@@ -39,7 +39,7 @@ const Header = () => {
 						</li>
 					</ul>
 				</div>
-				<a className="btn btn-ghost normal-case text-3xl">
+				<a className="hidden md:block btn btn-ghost normal-case text-3xl">
 					<span className="text-[#212121]">Testy </span>
 					<span className="text-[#ffffff]">Food</span>
 				</a>

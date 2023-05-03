@@ -1,47 +1,61 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Login = () => {
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+
+	const handleLogin = (event) => {
+		event.preventDefault();
+		console.log(email, password);
+	};
+
 	return (
 		<div className="hero min-h-screen bg-base-200">
 			<div className="hero-content flex-col lg:flex-row-reverse">
 				<div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-					<form className="card-body">
+					<form onSubmit={handleLogin} className="card-body">
 						<h2 className="mx-auto text-3xl font-bold underline text-[#7CB342]">
 							Log in
 						</h2>
 						<div className="form-control">
-							<label className="label">
-								<span className="label-text">Email</span>
-							</label>
+							<span className="label-text">Email</span>
+
 							<input
-								type="text"
+								onChange={(e) => setEmail(e.target.value)}
+								type="email"
 								placeholder="email"
 								className="input input-bordered rounded-md"
+								required
 							/>
 						</div>
 						<div className="form-control">
-							<label className="label">
-								<span className="label-text">Password</span>
-							</label>
+							<span className="label-text">Password</span>
+
 							<input
-								type="text"
+								onChange={(e) => setPassword(e.target.value)}
+								type="password"
 								placeholder="password"
 								className="input input-bordered rounded-md"
+								required
 							/>
-							<label className="label">
-								<a
-									href="#"
-									className="mt-3 text-base label-text-alt link link-hover"
-								>
-									<Link className="text-blue" to="/register">
-										<p>
-											Dont't have an Account
-											<span className="text-blue"> Register</span>
-										</p>
-									</Link>
-								</a>
-							</label>
+							<Link className="text-blue" to="/register">
+								<p>
+									<span className="text-blue"> Forget Password?</span>
+								</p>
+							</Link>
+
+							<a
+								href="#"
+								className="mt-3 text-base label-text-alt link link-hover"
+							>
+								<Link className="text-blue" to="/register">
+									<p>
+										Dont't have an Account
+										<span className="text-blue"> Register</span>
+									</p>
+								</Link>
+							</a>
 						</div>
 						<div className="form-control mt-6">
 							<button className="rounded-md bg-[#7CB342] btn btn-primary">
