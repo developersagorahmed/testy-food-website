@@ -10,7 +10,8 @@ const Register = () => {
 	const [password, setPassword] = useState("");
 	const [photo, setPhoto] = useState("");
 	const [name, setName] = useState("");
-	const { registerUser } = useContext(AuthContext);
+	const { registerUser, handleGoogleSignIn, handleGithubSignIn } =
+		useContext(AuthContext);
 	const navigate = useNavigate();
 	// const location = useLocation();
 	// const from = location.state?.from?.pathname || "/";
