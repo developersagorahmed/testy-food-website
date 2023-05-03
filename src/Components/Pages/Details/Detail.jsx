@@ -2,7 +2,7 @@ import React from "react";
 import { useLoaderData } from "react-router-dom";
 import "./Details.css";
 import { FaHeart } from "react-icons/fa";
-import { FaHamburger, FaChessRook, FaStar } from "react-icons/fa";
+import { FaHamburger, FaChessRook } from "react-icons/fa";
 import "@smastrom/react-rating/style.css";
 import { Rating } from "@smastrom/react-rating";
 import FoodCart from "../FoodCart/FoodCart";

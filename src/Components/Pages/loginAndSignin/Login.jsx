@@ -1,13 +1,28 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Login = () => {
+	const [error, setError] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const { signIn } = useContext(AuthContext);
+	const navigate = useNavigate();
+	const location = useLocation();
+	const from = location.state?.from?.pathname || "/";
 
 	const handleLogin = (event) => {
 		event.preventDefault();
-		console.log(email, password);
+		if ((email, password)) {
+			signIn(email, password)
+				.then((result) => {
+					const user = result.user;
+					console.log(user);
+					navigate(from, { replace: true });
+					event.target.reset();
+				})
+				.catch((error) => setError(error.message));
+		}
 	};
 
 	return (
@@ -18,6 +33,7 @@ const Login = () => {
 						<h2 className="mx-auto text-3xl font-bold underline text-[#7CB342]">
 							Log in
 						</h2>
+						<p className="text-red-900">{error}</p>
 						<div className="form-control">
 							<span className="label-text">Email</span>
 

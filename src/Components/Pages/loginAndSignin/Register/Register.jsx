@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { toast } from "react-toastify";
 
@@ -8,11 +8,15 @@ const Register = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [photo, setPhoto] = useState("");
+	const [name, setName] = useState("");
 	const { registerUser } = useContext(AuthContext);
+	const navigate = useNavigate();
+	const location = useLocation();
+	const from = location.state?.from?.pathname;
 
+	console.log(from);
 	const handleRegister = (event) => {
 		event.preventDefault();
-
 		if (password.length < 6) {
 			setError("Password mush be 6 characters");
 			return;
@@ -22,7 +26,8 @@ const Register = () => {
 			registerUser(email, password)
 				.then((result) => {
 					setError("");
-					console.log(result.user);
+
+					navigate(from);
 					event.target.reset();
 				})
 				.catch((err) => {
@@ -38,7 +43,18 @@ const Register = () => {
 						<h2 className="mx-auto text-3xl font-bold underline text-[#7CB342]">
 							Registration
 						</h2>
+
 						<p className="text-red-800">{error}</p>
+						<div className="form-control">
+							Your Name
+							<input
+								onChange={(e) => setName(e.target.value)}
+								name="text"
+								type="text"
+								placeholder="Your Name"
+								className="input input-bordered rounded-md"
+							/>
+						</div>
 						<div className="form-control">
 							Email
 							<input
