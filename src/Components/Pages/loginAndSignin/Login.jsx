@@ -1,12 +1,14 @@
 import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { FaGoogle, FaGithub } from "react-icons/fa";
 
 const Login = () => {
 	const [error, setError] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const { signIn } = useContext(AuthContext);
+	const { signIn, handleGoogleSignIn, handleGithubSignIn } =
+		useContext(AuthContext);
 	const navigate = useNavigate();
 	const location = useLocation();
 	const from = location.state?.from?.pathname || "/";
@@ -17,14 +19,30 @@ const Login = () => {
 			signIn(email, password)
 				.then((result) => {
 					const user = result.user;
-					console.log(user);
+
 					navigate(from, { replace: true });
 					event.target.reset();
 				})
 				.catch((error) => setError(error.message));
 		}
 	};
-
+	const loginWithGoogle = () => {
+		handleGoogleSignIn()
+			.then((result) => {
+				const user = result.user;
+				navigate(from);
+			})
+			.catch((error) => setError(error.message));
+	};
+	const loginWithGithub = () => {
+		handleGithubSignIn()
+			.then((result) => {
+				const user = result.user;
+				console.log(user);
+				navigate(from);
+			})
+			.then((error) => setError(error.message));
+	};
 	return (
 		<div className="hero min-h-screen bg-base-200">
 			<div className="hero-content flex-col lg:flex-row-reverse">
@@ -72,6 +90,22 @@ const Login = () => {
 									</p>
 								</Link>
 							</a>
+						</div>
+						<div className="mx-auto">
+							<button
+								onClick={loginWithGoogle}
+								class="flex mt-4 bg-transparent hover:bg-[#7cb342] text-[#7cb342] font-bold hover:text-white py-2 px-4 border border-[#7cb342] hover:border-transparent rounded"
+							>
+								Login with Google{" "}
+								<FaGoogle className="mt-1 ml-3 w-5 h-5"></FaGoogle>
+							</button>
+							<button
+								onClick={loginWithGithub}
+								class="flex mt-4 bg-transparent hover:bg-[#7cb342] text-[#7cb342] font-bold hover:text-white py-2 px-4 border border-[#7cb342] hover:border-transparent rounded"
+							>
+								Login with Github{" "}
+								<FaGithub className="mt-1 ml-3 w-5 h-5"></FaGithub>
+							</button>
 						</div>
 						<div className="form-control mt-6">
 							<button className="rounded-md bg-[#7CB342] btn btn-primary">

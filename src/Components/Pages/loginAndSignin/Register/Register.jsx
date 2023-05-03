@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import { FaGoogle, FaGithub } from "react-icons/fa";
 import { toast } from "react-toastify";
 
 const Register = () => {
@@ -11,10 +12,9 @@ const Register = () => {
 	const [name, setName] = useState("");
 	const { registerUser } = useContext(AuthContext);
 	const navigate = useNavigate();
-	const location = useLocation();
-	const from = location.state?.from?.pathname;
+	// const location = useLocation();
+	// const from = location.state?.from?.pathname || "/";
 
-	console.log(from);
 	const handleRegister = (event) => {
 		event.preventDefault();
 		if (password.length < 6) {
@@ -27,7 +27,7 @@ const Register = () => {
 				.then((result) => {
 					setError("");
 
-					navigate(from);
+					navigate("/");
 					event.target.reset();
 				})
 				.catch((err) => {
@@ -93,6 +93,16 @@ const Register = () => {
 									<span className="text-blue"> Login</span>
 								</p>
 							</Link>
+						</div>
+						<div className="mx-auto">
+							<button class="flex mt-4 bg-transparent hover:bg-[#7cb342] text-[#7cb342] font-bold hover:text-white py-2 px-4 border border-[#7cb342] hover:border-transparent rounded">
+								Login with Google{" "}
+								<FaGoogle className="mt-1 ml-3 w-5 h-5"></FaGoogle>
+							</button>
+							<button class="flex mt-4 bg-transparent hover:bg-[#7cb342] text-[#7cb342] font-bold hover:text-white py-2 px-4 border border-[#7cb342] hover:border-transparent rounded">
+								Login with Github{" "}
+								<FaGithub className="mt-1 ml-3 w-5 h-5"></FaGithub>
+							</button>
 						</div>
 						<div className="form-control mt-6">
 							<button

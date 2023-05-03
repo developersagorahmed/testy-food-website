@@ -70,8 +70,8 @@ const Header = () => {
 			</div>
 			{user ? (
 				<div className="navbar-end">
-					<div className="avatar mr-5">
-						<div className="w-10 mt-2 rounded-full ring ring-[#353535] ring-offset-base-100">
+					<div className="avatar hover:text-white mr-5">
+						<div className="w-10 mt-2 hover:ring-white rounded-full ring ring-[#353535] ring-offset-base-100">
 							{user?.photoURL ? (
 								<img src={user?.photoURL} alt="" />
 							) : (
