@@ -81,14 +81,14 @@ const Header = () => {
 					</div>
 
 					<button onClick={handleLogOut} className="login-btn">
-						<IoIosLogOut className="mr-2 mt-[5px] text-2xl"></IoIosLogOut>{" "}
 						Logout
+						<IoIosLogOut className="mr-2 mt-[5px] text-2xl ml-1"></IoIosLogOut>{" "}
 					</button>
 				</div>
 			) : (
 				<Link to="/login">
-					<button className="login-btn">
-						<IoIosLogIn className="mr-2 mt-[6px] text-2xl"></IoIosLogIn> Login
+					<button className="login-btn ml-[200px]">
+						<IoIosLogIn className="mr-1 mt-[6px] text-2xl"></IoIosLogIn> Login
 					</button>
 				</Link>
 			)}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaHeart } from "react-icons/fa";
 import "./FoodCart.css";
 import "@smastrom/react-rating/style.css";
@@ -8,6 +8,12 @@ import "react-toastify/dist/ReactToastify.css";
 const FoodCart = ({ data }) => {
 	console.log(data);
 	const { recipe_name, recipe_img, ingredients, cooking_method, rating } = data;
+	const [btn, setBtn] = useState(false);
+	const desableBtn = () => {
+		setBtn(true);
+
+		toast("This recipes added to you collections");
+	};
 	return (
 		<div>
 			<div className="mt-5 mb-10 chef-cart container mx-auto">
@@ -35,10 +41,15 @@ const FoodCart = ({ data }) => {
 						</div>
 						<div className=" card-actions justify-end ">
 							<button
-								onClick={() => toast("This recipes added to you collections")}
-								className=" text-red-900 chef-details-btn"
+								onClick={desableBtn}
+								className={
+									btn
+										? "font-bold btn btn-disabled btn-success "
+										: "font-bold btn btn-active btn-success  "
+								}
 							>
-								<FaHeart className="mr-2 mt-2 text-red-900"></FaHeart> Favourite
+								<FaHeart className="mr-1  h-5 w-5 mt-1 text-red-900"></FaHeart>
+								Favourite
 							</button>
 						</div>
 					</div>

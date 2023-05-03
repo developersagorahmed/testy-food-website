@@ -12,25 +12,24 @@ const Register = () => {
 
 	const handleRegister = (event) => {
 		event.preventDefault();
+
 		if (password.length < 6) {
 			setError("Password mush be 6 characters");
 			return;
 		}
 		setError("");
-		if ((name, email, password)) {
+		if ((photo, email, password)) {
 			registerUser(email, password)
 				.then((result) => {
 					setError("");
 					console.log(result.user);
-					toast("Welcome to Testy Food");
+					event.target.reset();
 				})
 				.catch((err) => {
 					setError(err.message);
 				});
 		}
-		form.reset();
 	};
-
 	return (
 		<div className="hero min-h-screen bg-base-200">
 			<div className="hero-content flex-col lg:flex-row-reverse">
@@ -69,7 +68,10 @@ const Register = () => {
 									className="input input-bordered rounded-md"
 								/>
 							</div>
-							<Link className="mt-3 text-base label-text-alt link link-hover">
+							<Link
+								to="/login"
+								className="mt-3 text-base label-text-alt link link-hover"
+							>
 								<p className="text-blue" to="/login">
 									Already have an Account
 									<span className="text-blue"> Login</span>
