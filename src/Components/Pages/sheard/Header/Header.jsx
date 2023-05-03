@@ -2,12 +2,19 @@ import React, { useContext } from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
 import { IoIosLogIn, IoIosLogOut } from "react-icons/io";
+import { FaUser } from "react-icons/fa";
 import { AuthContext } from "../../../Provider/AuthProvider";
 
 const Header = () => {
-	const { user } = useContext(AuthContext);
+	const { user, logOut } = useContext(AuthContext);
 	console.log(user);
-
+	const handleLogOut = () => {
+		logOut()
+			.then()
+			.catch((error) => {
+				console.log(error);
+			});
+	};
 	return (
 		<div className="navbar sticky top-0 z-50 bg-[#7CB342]">
 			<div className="navbar-start">
@@ -64,16 +71,19 @@ const Header = () => {
 			{user ? (
 				<div className="navbar-end">
 					<div className="avatar mr-5">
-						<div className="w-10 mt-2 rounded-full ring ring-primary ring-offset-base-100">
-							<img src="https://i.ibb.co/q7wTcQ1/Whats-App-Image-2023-04-18-at-3-07-58-PM-2.jpg" />
+						<div className="w-10 mt-2 rounded-full ring ring-[#353535] ring-offset-base-100">
+							{user?.photoURL ? (
+								<img src={user?.photoURL} alt="" />
+							) : (
+								<FaUser className="w-10 mt-1 h-9"></FaUser>
+							)}
 						</div>
 					</div>
-					<Link to="/login">
-						<button className="login-btn">
-							<IoIosLogOut className="mr-2 mt-[6px] text-2xl"></IoIosLogOut>{" "}
-							Logout
-						</button>
-					</Link>
+
+					<button onClick={handleLogOut} className="login-btn">
+						<IoIosLogOut className="mr-2 mt-[5px] text-2xl"></IoIosLogOut>{" "}
+						Logout
+					</button>
 				</div>
 			) : (
 				<Link to="/login">

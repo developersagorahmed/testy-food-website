@@ -28,6 +28,7 @@ const Register = () => {
 					setError(err.message);
 				});
 		}
+		form.reset();
 	};
 
 	return (
