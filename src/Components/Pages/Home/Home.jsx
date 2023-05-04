@@ -17,17 +17,15 @@ const Home = () => {
 					}}
 				>
 					<div className="hero-overlay bg-opacity-60"></div>
-					<div className="hero-content text-center text-neutral-content">
-						<div className="max-w-md">
-							<h1 className="mb-5 text-5xl font-bold text-[#6eb91d]">
-								Grilled Meat Ribs
+					<div className="hero-content text-left text-neutral-content">
+						<div className="max-w-xl">
+							<h1 className="mb-5  text-6xl font-extrabold text-[yellow]">
+								it's not just food,
+								<span className=" text-[white] "> it's an experience</span>
 							</h1>
-							<p className="mb-5 text-base text-white">
-								Grilled meat ribs are a popular dish enjoyed around the world.
-								Typically made from pork, beef, or lamb ribs, they are seasoned
-								with various spices, marinated, and then cooked over an open
-								flame or on a grill until the meat is tender and juicy.
-							</p>
+							<button className="bg-[#7CB342] btn text-[#353535] text-lg font-bold btn-primary rounded-md">
+								See More
+							</button>
 						</div>
 					</div>
 				</div>
