@@ -1,0 +1,14 @@
+.dwn-btn{
+    display: flex;
+    
+    background-color: #353535;
+    padding: 10px 10px;
+    font-size: 20px;
+    color: #7CB342;
+    border-radius: 10px;
+    
+}
+.dwn-btn:hover{
+    background-color: #7CB342,
+ 
+}

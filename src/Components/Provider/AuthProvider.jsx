@@ -18,15 +18,19 @@ const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
 	const [user, setUser] = useState({});
+	const [loading, setLoading] = useState(true);
 	const provider = new GoogleAuthProvider();
 	const githubProvider = new GithubAuthProvider();
 	const handleGithubSignIn = () => {
+		setLoading(true);
 		return signInWithPopup(auth, githubProvider);
 	};
 	const handleGoogleSignIn = () => {
+		setLoading(true);
 		return signInWithPopup(auth, provider);
 	};
 	const registerUser = (email, password) => {
+		setLoading(true);
 		return createUserWithEmailAndPassword(auth, email, password);
 	};
 
@@ -35,30 +39,32 @@ const AuthProvider = ({ children }) => {
 	};
 
 	const signIn = (email, password) => {
+		setLoading(true);
 		return signInWithEmailAndPassword(auth, email, password);
 	};
 
-	const updateName = (name, photo) => {
-		return updateProfile(auth.currentUser, {
-			displayName: name,
-			photoURL: photo,
-		});
-	};
+	// const updateName = (name, photo) => {
+	// 	return updateProfile(auth.currentUser, {
+	// 		displayName: name,
+	// 		photoURL: photo,
+	// 	});
+	// };
 
 	useEffect(() => {
 		const unSubscribe = onAuthStateChanged(auth, (LoggedInUser) => {
 			setUser(LoggedInUser);
+			setLoading(false);
 		});
 		return () => {
 			unSubscribe();
 		};
 	}, []);
 	const authInfo = {
+		loading,
 		registerUser,
 		user,
 		logOut,
 		signIn,
-		updateName,
 		handleGoogleSignIn,
 		handleGithubSignIn,
 	};

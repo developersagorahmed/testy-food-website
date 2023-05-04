@@ -73,10 +73,8 @@ const Login = () => {
 								className="input input-bordered rounded-md"
 								required
 							/>
-							<Link className="text-blue" to="/register">
-								<p>
-									<span className="text-blue"> Forget Password?</span>
-								</p>
+							<Link className="text-blue hover:underline" to="/register">
+								<span className="text-blue"> Forget Password?</span>
 							</Link>
 
 							<a
@@ -86,7 +84,7 @@ const Login = () => {
 								<Link className="text-blue" to="/register">
 									<p>
 										Dont't have an Account
-										<span className="text-blue"> Register</span>
+										<span className="text-blue underline"> Register</span>
 									</p>
 								</Link>
 							</a>

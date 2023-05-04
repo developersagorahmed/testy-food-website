@@ -7,11 +7,13 @@ import Register from "../Components/Pages/loginAndSignin/Register/Register";
 import Detail from "../Components/Pages/Details/Detail";
 import PrivateRoute from "../Components/Provider/PrivateRoute";
 import Blog from "../Components/Pages/Blog/Blog";
+import Error from "../Components/Pages/Error/Error";
 
 const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <Main></Main>,
+		errorElement: <Error></Error>,
 		children: [
 			{
 				path: "/",

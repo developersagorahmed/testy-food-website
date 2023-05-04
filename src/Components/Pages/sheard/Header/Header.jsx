@@ -50,10 +50,22 @@ const Header = () => {
 						</li>
 					</ul>
 				</div>
-				<a className="hidden md:block btn btn-ghost normal-case text-3xl">
-					<span className="text-[#212121]">Testy </span>
-					<span className="text-[#ffffff]">Food</span>
-				</a>
+				<Link
+					to="/"
+					className=" hidden md:block btn btn-ghost normal-case text-3xl"
+				>
+					<div className="flex">
+						<img
+							className="w-12 h-12 mr-1"
+							src="https://i.ibb.co/zJCq5mC/pngegg-2.png"
+							alt=""
+						/>
+						<div>
+							<span className="text-[#212121]">Testy </span>
+							<span className="text-[#ffffff]">Food</span>
+						</div>
+					</div>
+				</Link>
 			</div>
 			<div className="navbar-center hidden lg:flex">
 				<ul className="menuContainer menu menu-horizontal px-1">
@@ -73,7 +85,7 @@ const Header = () => {
 					<div className="avatar hover:text-white mr-5">
 						<div className="w-10 mt-2 hover:ring-white rounded-full ring ring-[#353535] ring-offset-base-100">
 							{user?.photoURL ? (
-								<img src={user?.photoURL} alt="" />
+								<img src={user.photoURL} title={user.displayName} alt="" />
 							) : (
 								<FaUser className="w-10 mt-1 h-9"></FaUser>
 							)}

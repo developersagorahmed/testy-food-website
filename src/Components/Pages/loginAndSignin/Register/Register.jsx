@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
-import { FaGoogle, FaGithub } from "react-icons/fa";
-import { toast } from "react-toastify";
+
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
 	const [error, setError] = useState("");
@@ -10,8 +10,7 @@ const Register = () => {
 	const [password, setPassword] = useState("");
 	const [photo, setPhoto] = useState("");
 	const [name, setName] = useState("");
-	const { registerUser, handleGoogleSignIn, handleGithubSignIn } =
-		useContext(AuthContext);
+	const { registerUser } = useContext(AuthContext);
 	const navigate = useNavigate();
 	// const location = useLocation();
 	// const from = location.state?.from?.pathname || "/";
@@ -26,10 +25,11 @@ const Register = () => {
 		if ((photo, email, password)) {
 			registerUser(email, password)
 				.then((result) => {
+					const currentUser = result.user;
+					updateProfile(currentUser, { displayName: name, photoURL: photo });
 					setError("");
-
-					navigate("/");
 					event.target.reset();
+					navigate("/");
 				})
 				.catch((err) => {
 					setError(err.message);
@@ -95,21 +95,12 @@ const Register = () => {
 								</p>
 							</Link>
 						</div>
-						<div className="mx-auto">
-							<button class="flex mt-4 bg-transparent hover:bg-[#7cb342] text-[#7cb342] font-bold hover:text-white py-2 px-4 border border-[#7cb342] hover:border-transparent rounded">
-								Login with Google{" "}
-								<FaGoogle className="mt-1 ml-3 w-5 h-5"></FaGoogle>
-							</button>
-							<button class="flex mt-4 bg-transparent hover:bg-[#7cb342] text-[#7cb342] font-bold hover:text-white py-2 px-4 border border-[#7cb342] hover:border-transparent rounded">
-								Login with Github{" "}
-								<FaGithub className="mt-1 ml-3 w-5 h-5"></FaGithub>
-							</button>
-						</div>
+
 						<div className="form-control mt-6">
 							<button
 								type="submit"
 								name="submit"
-								className="bg-[#7CB342] btn btn-primary rounded-md"
+								className="bg-[#7CB342] btn text-black font-bold btn-primary rounded-md"
 							>
 								Sign Up
 							</button>

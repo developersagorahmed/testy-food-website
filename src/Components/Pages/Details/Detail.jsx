@@ -6,6 +6,7 @@ import { FaHamburger, FaChessRook } from "react-icons/fa";
 import "@smastrom/react-rating/style.css";
 import { Rating } from "@smastrom/react-rating";
 import FoodCart from "../FoodCart/FoodCart";
+import LazyLoad from "react-lazy-load";
 
 const Detail = () => {
 	const data = useLoaderData();
@@ -35,6 +36,7 @@ const Detail = () => {
 							alt="Album"
 						/>
 					</figure>
+
 					<div className="w-8/12 card-body">
 						<h2 className="text-3xl underline card-title text-[#7CB342]">
 							{chef_name}
