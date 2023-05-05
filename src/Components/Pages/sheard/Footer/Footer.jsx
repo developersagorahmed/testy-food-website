@@ -1,13 +1,20 @@
 import React from "react";
 import { FaTwitter, FaYoutube, FaFacebook } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
 	return (
 		<footer className=" footer footer-center p-10 bg-[#7CB342] text-base-content rounded">
 			<div className="grid grid-flow-col gap-4">
-				<a className="link link-hover text-[22px] ml-3">About us</a>
-				<a className="link link-hover text-[22px]">Contact</a>
-				<a className="link link-hover text-[22px]">Jobs</a>
+				<li className="text-2xl list-none hover:underline">
+					<Link to="/">Home</Link>
+				</li>
+				<li className="text-2xl list-none hover:underline">
+					<Link to="/about">About</Link>
+				</li>
+				<li className="text-2xl list-none hover:underline">
+					<Link to="/blog">Blog</Link>
+				</li>
 			</div>
 			<div>
 				<div className="grid grid-flow-col gap-4">
