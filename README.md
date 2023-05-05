@@ -1,6 +1,6 @@
 ## Live site link
 
-Click here for Live site link [https://assignment-10-testy-food.web.app]
+Clint here for Live site link [https://assignment-10-testy-food.web.app]
 
 - Blog button send you to blog page
 - if you click any chef Recipe view button then you show about of chef and her top Recipe

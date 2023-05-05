@@ -6,8 +6,16 @@ import { Rating } from "@smastrom/react-rating";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const FoodCart = ({ data }) => {
-	console.log(data);
+	let LocalData = [];
+
 	const { recipe_name, recipe_img, ingredients, cooking_method, rating } = data;
+	const localStore = () => {
+		let getItem = JSON.parse(localStorage.getItem("item"));
+		if (getItem) {
+			LocalData.push(...getItem, data);
+		}
+		localStorage.setItem("item", JSON.stringify(LocalData));
+	};
 	const [btn, setBtn] = useState(false);
 	const desableBtn = () => {
 		setBtn(true);
@@ -32,7 +40,7 @@ const FoodCart = ({ data }) => {
 						<div className="mt-6">
 							<h2 className="font-semibold text-lg underline">Ingredients</h2>
 							{ingredients?.map((grad) => (
-								<li key={grad.index}>{grad}</li>
+								<li key={grad}>{grad}</li>
 							))}
 						</div>
 						<p className=" grow-0 mb-5 ">{cooking_method}</p>
@@ -40,17 +48,19 @@ const FoodCart = ({ data }) => {
 							<Rating style={{ maxWidth: 120 }} value={rating} readOnly />
 						</div>
 						<div className=" card-actions justify-end ">
-							<button
-								onClick={desableBtn}
-								className={
-									btn
-										? "font-bold btn btn-disabled btn-success "
-										: "font-bold btn btn-active btn-success  "
-								}
-							>
-								<FaHeart className="mr-1  h-5 w-5 mt-1 text-red-900"></FaHeart>
-								Favourite
-							</button>
+							<div onClick={localStore}>
+								<button
+									onClick={desableBtn}
+									className={
+										btn
+											? "font-bold btn btn-disabled btn-success "
+											: "font-bold btn btn-active btn-success  "
+									}
+								>
+									<FaHeart className="mr-1  h-5 w-5 mt-1 text-red-900"></FaHeart>
+									Favourite
+								</button>
+							</div>
 						</div>
 					</div>
 				</div>

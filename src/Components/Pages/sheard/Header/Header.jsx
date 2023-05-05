@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
-import { IoIosLogIn, IoIosLogOut } from "react-icons/io";
+import { IoIosLogIn, IoIosLogOut, IoIosHeart } from "react-icons/io";
 import { FaUser } from "react-icons/fa";
 import { AuthContext } from "../../../Provider/AuthProvider";
 
 const Header = () => {
 	const { user, logOut } = useContext(AuthContext);
-	console.log(user);
+
 	const handleLogOut = () => {
 		logOut()
 			.then()
@@ -82,6 +82,13 @@ const Header = () => {
 			</div>
 			{user ? (
 				<div className="navbar-end">
+					<div className="mr-6 hover:bg-[#353535] hover:text-white hover:px-5 px-5 hover:py-2 rounded-lg ">
+						<Link className="flex text-2xl font-semibold " to="/fav">
+							<IoIosHeart className="mr-1 mt-[6px] text-3xl"></IoIosHeart>
+							Favorite
+						</Link>
+					</div>
+
 					<div className="avatar hover:text-white mr-5">
 						<div className="w-10 mt-2 hover:ring-white rounded-full ring ring-[#353535] ring-offset-base-100">
 							{user?.photoURL ? (

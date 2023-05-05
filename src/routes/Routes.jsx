@@ -9,6 +9,7 @@ import PrivateRoute from "../Components/Provider/PrivateRoute";
 import Blog from "../Components/Pages/Blog/Blog";
 import Error from "../Components/Pages/Error/Error";
 import AboutUs from "../Components/Pages/AboutUs/AboutUs";
+import Farecipes from "../Components/Pages/FaReciprs/Farecipes";
 
 const router = createBrowserRouter([
 	{
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
 			{
 				path: "/about",
 				element: <AboutUs></AboutUs>,
+			},
+			{
+				path: "fav",
+				element: <Farecipes></Farecipes>,
 			},
 			{
 				path: "/:id",

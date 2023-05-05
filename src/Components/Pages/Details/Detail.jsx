@@ -1,5 +1,5 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import "./Details.css";
 import { FaHeart } from "react-icons/fa";
 import { FaHamburger, FaChessRook } from "react-icons/fa";
@@ -21,12 +21,13 @@ const Detail = () => {
 		recipes,
 		years_of_experience,
 	} = data[0];
-	console.log(data);
+
 	return (
 		<div>
-			<h1 className="mt-5 mb-5 text-center text-5xl font-bold underline  text-[#7CB342]">
+			<h1 className="mt-5 mb-2 text-center text-5xl font-bold underline  text-[#7CB342]">
 				Chef Details
 			</h1>
+
 			<div className="mb-6 pb-6 chef-cart  mx-auto">
 				<div className="bg-[#353535] text-white card lg:card-side shadow-xl">
 					<figure>
@@ -80,6 +81,7 @@ const Detail = () => {
 				<h1 className="mt-5 mb-5 text-center text-5xl font-bold underline  text-[#7CB342]">
 					Recipes Details
 				</h1>
+
 				{recipes?.map((single) => (
 					<FoodCart key={single.recipe_name} data={single}></FoodCart>
 				))}
